@@ -36,8 +36,14 @@ const questions = [
     },
     {
         type: 'input',
+        name: 'cedits',
+        message: 'Who helped you with this project?',
+    },
+    {
+        type: 'list',
         name: 'license',
         message: 'What license will you be using?',
+        choices: ['nothing','Unlicensed','GNU AGPLv3','GNU GPLv3','GNU LGPLv3','Mozilla Public License 2.0','Apache License 2.0','MIT License','Boost Software License 1.0'],
     },
     {
         type: 'input',
@@ -52,14 +58,20 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile('./Develop/Generated-README/README.md', generateMarkdown(data), (err) =>
+function writeToFile(fileName) {
+    fs.writeFile('./Generated-README/README.md', fileName, (err) =>
     err ? console.log(err) : console.log('Successfully generated README.md!')
     );
 };
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer
+        .prompt(questions).then((data) => {
+            const readmePageContent = generateMarkdown(data);
+            writeToFile(readmePageContent);
+        })
+}
 
 // Function call to initialize app
 init();
