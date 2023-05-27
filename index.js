@@ -62,7 +62,7 @@ function writeToFile(content) {
     fs.writeFile('dist/README.md', content
     ).then(() => {
         //console.log(result)
-        console.log('Successfully generated README.md!')
+        console.log('Successfully generated README.md in dist folder!')
     }).catch(err => {
         console.log(err)
     })

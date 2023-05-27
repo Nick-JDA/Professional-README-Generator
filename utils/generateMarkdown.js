@@ -103,11 +103,12 @@ ${data.description} \n
 
 - [Installation](#installation) \n
 - [Usage](#usage) \n
+- [Credits](#credits) \n
 - [Contributing](#contributing) \n
 - [Tests](#tests) \n
-- [Credits](#credits) \n
-- [License](#license) \n
 - [Questions](#questions) \n
+${data.license === 'nothing' ? '' : '- [License](#license)'} \n
+
 
 ## Installation \n
 
@@ -117,7 +118,7 @@ ${data.installation} \n
 
 ${data.usage} \n
     
-    ![alt text](insert file path here) \n
+![alt text](insert file path here) \n
 
 ## Credits \n
 
@@ -139,7 +140,7 @@ ${data.tests} \n
 
 To contact me for any questions you may have please email me at ${data.email} \n
 
-My GitHub ${data.github} \n
+My GitHub: ${data.github} \n
 
 `;
 }
