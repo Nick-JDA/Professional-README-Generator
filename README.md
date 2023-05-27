@@ -40,7 +40,11 @@ In terminal node.js type npm i
 
 Open files in VScode and navigate to the index.js file. Open index.js with terminal and enter "node index.js". Follow through with prompts in terminal, entering in desired content for each section. Upon completion your generated readme will appear in the dist folder.  
 
+![index,js](./images/index.js-questions.png)
 
+![index,js](./images//generate-markdown-top.png)
+
+![index,js](./images/generate-markdown-bottom.png)
 
 Video of app flow:
 https://drive.google.com/file/d/1w5xbEgdVXIIO9f3GiPSFqMorQOKkrdDd/view
