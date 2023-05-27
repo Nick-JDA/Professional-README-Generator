@@ -31,7 +31,9 @@ function renderLicenseBadge(license) {
 
     case 'Boost Software License 1.0':
       return badgers += '[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)';
-      
+
+    default:
+      throw new Error('license input error')
   }
 }
 
@@ -67,70 +69,77 @@ function renderLicenseLink(license) {
 
     case 'Boost Software License 1.0':
       return lyesenseLink += '[License: Boost Software 1.0](https://choosealicense.com/licenses/bsl-1.0/)';
-      
+
+    default:
+      throw new Error('license input error')
   }
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {
-
+function renderLicenseSection(license = '') {
+  if (license === 'nothing') {
+    return '';
+  } else {
+    return `## License             \n
+    ${renderLicenseLink(license)}  \n
+    ${renderLicenseBadge(license)} \n
+    `;
+  }
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
+function generateMarkdown(data = {}) {
   return `
-# ${data.title}
+# ${data.title} \n
 
-## Badges
+${renderLicenseBadge(data.license)} \n
 
-${data.badges}
+## Description \n
 
-## Description
+${data.description} \n
 
-${data.description}
+## Table of Contents \n
 
-## Table of Contents
+- [Installation](#installation) \n
+- [Usage](#usage) \n
+- [Contributing](#contributing) \n
+- [Tests](#tests) \n
+- [Credits](#credits) \n
+- [License](#license) \n
+- [Questions](#questions) \n
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Tests](#tests)
-- [Credits](#credits)
-- [License](#license)
-- [Questions](#questions)
+## Installation \n
 
-## Installation
+${data.installation} \n
 
-${data.installation}
+## Usage \n
 
-## Usage
-
-${data.usage}
+${data.usage} \n
     
-    ![alt text](insert file path here)
+    ![alt text](insert file path here) \n
 
-## Credits
+## Credits \n
 
-${data.credits}
+${data.credits} \n
 
-## License
+${renderLicenseSection(data.license)} \n
 
-${data.license}
+${data.license} \n
 
-## Contributing
+## Contributing \n
 
-${data.contributing}
+${data.contributing} \n
 
-## Tests
+## Tests \n
 
-${data.tests}
+${data.tests} \n
 
-## Questions
+## Questions \n
 
-To contact me for any questions you may have please email me at ${data.email}
+To contact me for any questions you may have please email me at ${data.email} \n
 
-My GitHub ${data.github}
+My GitHub ${data.github} \n
 
 `;
 }
